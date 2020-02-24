@@ -1,0 +1,11 @@
+.player-container {
+  width: 100%;
+  height: calc((9 / 16) * 76vw);
+  max-height: calc(100vh - 169px);
+  min-height: 480px;
+  position: relative;
+}
+
+mat-card {
+  margin-bottom: 20px;
+}

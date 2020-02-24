@@ -1,0 +1,108 @@
+@import '~@angular/material/theming';
+@import 'colors';
+
+@include mat-core();
+
+$primary-palette: (
+        400: $color-blue,
+        contrast: (
+                50: $light-primary-text,
+                100: $light-primary-text,
+                200: $light-primary-text,
+                300: $light-primary-text,
+                400: $light-primary-text,
+                500: $light-primary-text,
+                600: $light-primary-text,
+                700: $light-primary-text,
+                800: $light-primary-text,
+                900: $light-primary-text,
+                A100: $light-primary-text,
+                A200: $light-primary-text,
+                A400: $light-primary-text,
+                A700: $light-primary-text,
+        )
+);
+
+$accept-palette: (
+        400: $color-red,
+        contrast: (
+                50: $light-primary-text,
+                100: $light-primary-text,
+                200: $light-primary-text,
+                300: $light-primary-text,
+                400: $light-primary-text,
+                500: $light-primary-text,
+                600: $light-primary-text,
+                700: $light-primary-text,
+                800: $light-primary-text,
+                900: $light-primary-text,
+                A100: $light-primary-text,
+                A200: $light-primary-text,
+                A400: $light-primary-text,
+                A700: $light-primary-text,
+        )
+);
+
+$warn-palette: (
+        400: $color-red,
+        contrast: (
+                50: $light-primary-text,
+                100: $light-primary-text,
+                200: $light-primary-text,
+                300: $light-primary-text,
+                400: $light-primary-text,
+                500: $light-primary-text,
+                600: $light-primary-text,
+                700: $light-primary-text,
+                800: $light-primary-text,
+                900: $light-primary-text,
+                A100: $light-primary-text,
+                A200: $light-primary-text,
+                A400: $light-primary-text,
+                A700: $light-primary-text,
+        )
+);
+
+$my-app-primary: mat-palette($primary-palette, 400);
+$my-app-accent: mat-palette($accept-palette, 400);
+$my-app-warn: mat-palette($warn-palette, 400);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+
+@include angular-material-theme($my-app-theme);
+
+@mixin snackbar($theme) {
+  $primary: mat-color(map-get($theme, primary));
+  $primary-text: mat-color(map-get($theme, primary), default-contrast);
+  $warn: mat-color(map-get($theme, warn));
+  $warn-text: mat-color(map-get($theme, warn), default-contrast);
+
+  .style-success {
+    color: $primary-text;
+    background-color: $primary;
+  }
+  .style-success .mat-simple-snackbar-action {
+    color: $primary-text;
+  }
+  .style-error {
+    color: $warn-text;
+    background-color: $warn;
+  }
+  .style-error .mat-simple-snackbar-action {
+    color: $warn-text;
+  }
+}
+
+.style-success {
+  color: black;
+  background-color: white;
+}
+
+.mat-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.mat-danger {
+  background-color: $color-red;
+  color: #fff;
+}

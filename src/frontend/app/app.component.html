@@ -1,0 +1,34 @@
+<div class="header">
+    <div>
+        <a routerLink="/auth/sign-in" routerLinkActive="active" mat-button>Sign In</a>
+        <a routerLink="/auth/sign-up" routerLinkActive="active" mat-button>Sign Up</a>
+    </div>
+    <div>
+        <a class="menu" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" mat-button>ALICE</a>
+    </div>
+    <div>
+        <!-- a routerLink="/news" routerLinkActive="active" mat-button>News</a> -->
+    </div>
+</div>
+<div style="min-height: 4px">
+    <mat-progress-bar *ngIf="animateProgressBar" [color]="'primary'" [mode]="'indeterminate'"></mat-progress-bar>
+</div>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+
+<div class="area" >
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div >

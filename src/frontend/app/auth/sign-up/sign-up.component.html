@@ -1,0 +1,139 @@
+<div class="row">
+    <mat-card class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <mat-card-title style="margin-bottom: 20px">Create your account</mat-card-title>
+
+        <mat-card-content>
+            <ng-container *ngIf="!confirmMode">
+                <form [formGroup]="form" (ngSubmit)="signUp()">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group-custom">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>First name</mat-label>
+                                    <input type="text" matInput formControlName="firstName" required autocomplete="on" placeholder="First name">
+                                    <mat-error *ngIf="f.firstName.invalid" class="invalid-feedback">
+                                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group-custom">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Last name</mat-label>
+
+                                    <input type="text" matInput formControlName="lastName" id="lastName" required
+                                           autocomplete="on" placeholder="Last name">
+                                    <mat-error *ngIf="f.lastName.invalid" class="invalid-feedback">
+                                        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group-custom">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Email</mat-label>
+
+                                    <input type="email" matInput formControlName="email" required autocomplete="on" placeholder="Email">
+                                    <mat-error *ngIf="f.email.invalid" class="invalid-feedback">
+                                        <div *ngIf="f.email.errors.required">Email is required</div>
+                                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group-custom">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Password</mat-label>
+
+                                    <input type="password" matInput formControlName="password" required placeholder="Password"
+                                           autocomplete="off">
+                                    <mat-error *ngIf="f.password.invalid" class="invalid-feedback">
+                                        <div *ngIf="f.password.errors.required">Password is required</div>
+                                        <div *ngIf="f.password.errors.minlength">Password must be at least <b>6</b>
+                                            characters
+                                        </div>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group-custom">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Confirm password</mat-label>
+
+                                    <input type="password" matInput formControlName="confirmPassword" minlength="6"
+                                           maxlength="50" required autocomplete="off" placeholder="Confirm password">
+                                    <mat-error *ngIf="f.confirmPassword.invalid" class="invalid-feedback">
+                                        <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required
+                                        </div>
+                                        <div *ngIf="f.confirmPassword.errors.minlength">Password must be at least
+                                            <b>6</b>
+                                            characters
+                                        </div>
+                                        <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ng-container *ngIf="error">
+                        <hr class="my-4">
+                        <div class="alert alert-danger">{{error}}</div>
+                    </ng-container>
+
+                    <div class="form-group-custom" style="text-align: right">
+                        <button mat-flat-button color="primary" type="submit" [disabled]="loading || this.timer > 0 || form.invalid"><span *ngIf="this.timer <= 0">Next</span><span *ngIf="this.timer > 0">{{this.timer}}</span></button>
+                    </div>
+                </form>
+            </ng-container>
+            <ng-container *ngIf="confirmMode">
+                <p>Please confirm your Email, we sent a secret code to it.</p>
+                <p>You can enable verification in your account settings.</p>
+                <p>Your Email: <strong>{{f.email.value}}</strong></p>
+
+                <mat-form-field appearance="outline" style="width: 200px">
+                    <mat-label>Secret code</mat-label>
+
+                    <input type="text" matInput id="emailConfirm" required [(ngModel)]="secretCode"
+                           autocomplete="off" placeholder="Secret code">
+                </mat-form-field>
+
+                <div class="row">
+                    <div class="col-6" style="text-align: left;">
+                        <button mat-flat-button color="primary"
+                                type="submit" [disabled]="loading" (click)="confirmMode = false">
+                            Back
+                        </button>
+                    </div>
+                    <div class="col-6" style="text-align: right;">
+                        <button mat-flat-button color="primary"
+                                type="submit" [disabled]="loading || secretCode.length !== 6">Complete
+                        </button>
+                    </div>
+                </div>
+
+                <div style="margin-top: 10px">
+                    <small>You did not receive Email?
+                        <button style="padding: 5px; line-height: 10px" mat-button color="primary" [disabled]="loading || this.timer > 0"><span *ngIf="this.timer <= 0">Next</span><span *ngIf="this.timer > 0">{{this.timer}}</span></button>
+                    </small>
+                </div>
+
+            </ng-container>
+        </mat-card-content>
+        <mat-card-actions *ngIf="!confirmMode">
+            <button mat-button routerLink="/auth/sign-in" style="float: left">Sign In</button>
+            <button mat-button routerLink="/auth/forgot" style="float: right">Forgot password?</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+

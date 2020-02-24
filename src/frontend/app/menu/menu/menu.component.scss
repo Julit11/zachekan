@@ -1,0 +1,34 @@
+.cart-avatar {
+  font-size: 41px;
+  float: right;
+  margin: auto;
+}
+mat-card-actions {
+  button {
+    margin-right: 5px;
+  }
+}
+.mat-card-header {
+  cursor: pointer;
+  user-select: none;
+  mat-card-title {
+    text-decoration: none;
+  }
+}
+
+.row {
+  div {
+    margin-bottom: 15px;
+  }
+}
+
+mat-card {
+  padding: 0;
+  a {
+    mat-card-title {
+      padding: 15px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

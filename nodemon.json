@@ -1,0 +1,9 @@
+{
+  "watch": [
+    "dist/*"
+  ],
+  "ignore" : [
+    "dist/public/*"
+  ],
+  "ext": "js"
+}

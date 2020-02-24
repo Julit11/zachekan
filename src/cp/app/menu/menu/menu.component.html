@@ -1,0 +1,36 @@
+<div class="row menu-component">
+    <div class="col-sm-3">
+        <mat-card>
+            <mat-card-header matRipple routerLink="/server">
+                <mat-card-title>Server</mat-card-title>
+                <div class="cart-avatar">
+                    <fa-icon [icon]="icons.server"></fa-icon>
+                </div>
+            </mat-card-header>
+            <mat-card-actions>
+                <button [color]="'primary'" routerLink="/server" mat-flat-button>Open</button>
+                <a href="/server" target="_blank">
+                    <button mat-flat-button [color]="'accent'" mat-button>External</button>
+                </a>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div class="col-sm-3">
+        <mat-card>
+            <a matRipple routerLink="/bots">
+                <mat-card-header>
+                    <mat-card-title>Bots</mat-card-title>
+                    <div class="cart-avatar">
+                        <fa-icon [icon]="icons.robot"></fa-icon>
+                    </div>
+                </mat-card-header>
+            </a>
+            <mat-card-actions>
+                <button [color]="'primary'" routerLink="/bots" mat-flat-button>Open</button>
+                <a href="/bots" target="_blank">
+                    <button mat-flat-button [color]="'accent'" mat-button>External</button>
+                </a>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
